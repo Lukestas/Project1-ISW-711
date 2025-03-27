@@ -2,22 +2,22 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config();
 
-const TOKEN_SECRET=process.env.TOKEN_SECRET;
+const TOKEN_SECRET = process.env.TOKEN_SECRET;
 
-if (!TOKEN_SECRET){
+if (!TOKEN_SECRET) {
     throw new Error("Falta la variable de entorno TOKEN_SECRET en el archivo .env")
 }
 
-export function createAccessToken(payload) {
-    return new Promise(((resolve,reject)=>{
-        jwt.sign(
-            payload,
-            TOKEN_SECRET,
-            { expiresIn: "1d" },
-            (err, token) => {
+export async function createAccessToken(payload) {
+    try {
+        const token = await new Promise((resolve, reject) => {
+            jwt.sign(payload, TOKEN_SECRET, { expiresIn: "1d" }, (err, token) => {
                 if (err) reject(err);
-                resolve(token)
-            }
-        );
-    }))
+                resolve(token);
+            });
+        });
+        return token;
+    } catch (error) {
+        throw new Error("Error al generar el token: " + error.message);
+    }
 }

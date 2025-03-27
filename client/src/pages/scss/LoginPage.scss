@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
 
-    .Error-Backend {
+    .Error-message {
         background-color: rgba(255, 0, 0, 0.1);
         color: #d9534f;
         padding: 10px;
@@ -16,8 +16,7 @@
         animation: fadeIn 0.5s ease-in-out;
     }
 
-
-    .form-register {
+    .form-login {
         background-color: rgb(190, 185, 185);
         width: 30%;
         box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.5);
@@ -28,8 +27,8 @@
         padding: 0 20px;
         gap: 15px;
 
-        .title-register {
-            color: #333;
+        .title-login {
+            color: #252424;
             text-align: center;
             margin-top: 5%;
         }
@@ -79,7 +78,7 @@
             }
         }
 
-        .login-link {
+        .register-link {
             text-align: center;
             margin-bottom: 15px;
             font-size: 1rem;

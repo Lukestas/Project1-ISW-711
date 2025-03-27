@@ -1,12 +1,15 @@
 import { Router } from "express";
-import { login, logout, profile, registerParent } from "../controllers/authController.js";
+import { getParent, login, logout, registerParent, verifyToken } from "../controllers/authController.js";
 import { authRequired } from "../middlewares/validateToken.js"
+
 
 const router = Router();
 
-router.post('/register', registerParent);
-router.post('/login', login);
-router.post("/logout", logout)
-router.get("/profile", authRequired, profile)
+router.post('/auth/register', registerParent);
+router.post('/auth/login', login);
+router.post("/auth/logout", logout)
+router.get("/auth/verify", verifyToken)
+
+router.get("/auth/parent", authRequired, getParent)
 
 export default router;
